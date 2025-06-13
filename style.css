@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #fefefe;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.site-header {
+  background: #111;
+  color: #fff;
+  padding: 0.05rem 0;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  margin-top: 0.5rem;
+}
+
+.nav a {
+  color: #fff;
+  margin-right: 1.5rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 4rem 0;
+  text-align: center;
+  transition: background-image 1s ease-in-out;
+}
+
+
+.hero .btn {
+  display: inline-block;
+  background: #aef1f1; /* <-- NEW COLOR: green */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #6dd5f0; /* <-- Darker green on hover */
+}
+
+
+.services {
+  background: #f4f4f4;
+}
+
+.service-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.service {
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  flex: 1;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.service:hover {
+  transform: scale(1.05);
+  background-color: #63aaf7; /* Blue background on hover */
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.site-footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* Mobile styles for screens up to 768px wide */
+@media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .services {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service {
+    width: 100%;
+  }
+
+  .contact form {
+    padding: 1rem;
+  }
+}
+
+/* Hamburger - hidden by default */
+.hamburger {
+  display: none;
+}
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out;
+  }
+
+  .nav a {
+    padding: 0.5rem 0;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav.active {
+    max-height: 300px; /* Adjust as needed based on number of links */
+    transition: max-height 0.4s ease-in;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service {
+    width: 100%;
+  }
+}
+
+/* Initial hidden state */
+.service {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When visible */
+.service.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
